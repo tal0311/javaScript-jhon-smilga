@@ -17,12 +17,12 @@ class Counter {
     this.DOMvalue.textContent = this.value
 
     // bind this to all functions
-    this.increase = this.increase.bind(this)
-    this.decrease = this.decrease.bind(this)
-    this.reset = this.reset.bind(this)
-    this.increaseBtn.addEventListener('click', this.increase)
-    this.decreaseBtn.addEventListener('click', this.decrease)
-    this.resetBtn.addEventListener('click', this.reset)
+    // this.increase = this.increase.bind(this)
+    // this.decrease = this.decrease.bind(this)
+    // this.reset = this.reset.bind(this)
+    this.increaseBtn.addEventListener('click', this.increase.bind(this))
+    this.decreaseBtn.addEventListener('click', this.decrease.bind(this))
+    this.resetBtn.addEventListener('click', this.reset.bind(this))
   }
 
   increase() {
@@ -43,5 +43,4 @@ class Counter {
 const firstCounter = new Counter(getElement('.first-counter'), 100)
 const secondCounter = new Counter(getElement('.second-counter'), 200)
 
-firstCounter.increase()
 firstCounter.increase()
