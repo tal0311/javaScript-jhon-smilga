@@ -14,25 +14,29 @@ function Counter(element, value) {
   this.decreaseBtn = element.querySelector('.decrease')
   this.DOMvalue = element.querySelector('.value')
   this.DOMvalue.textContent = this.value
+
+  // bind this to all functions
+  this.increase = this.increase.bind(this)
+  this.decrease = this.decrease.bind(this)
+  this.reset = this.reset.bind(this)
+  this.increaseBtn.addEventListener('click', this.increase)
+  this.decreaseBtn.addEventListener('click', this.decrease)
+  this.resetBtn.addEventListener('click', this.reset)
 }
 
+// prototype methods
 Counter.prototype.increase = function () {
-  console.log(this)
   this.value++
   this.DOMvalue.textContent = this.value
 }
 Counter.prototype.decrease = function () {
-  console.log(this)
   this.value--
   this.DOMvalue.textContent = this.value
 }
 Counter.prototype.reset = function () {
-  console.log(this)
   this.value = 0
   this.DOMvalue.textContent = this.value
 }
 
 const firstCounter = new Counter(getElement('.first-counter'), 100)
 const secondCounter = new Counter(getElement('.second-counter'), 200)
-
-firstCounter.increase()
