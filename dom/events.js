@@ -25,10 +25,9 @@ const h2 = document.querySelector('h2')
 const form = document.querySelector('form')
 const btn = document.querySelector('.btn')
 const input = document.querySelector('#name')
-
 const input2 = document.querySelector('#password')
-
 let users = []
+
 form.addEventListener('submit', (e) => {
   e.preventDefault()
 
@@ -36,6 +35,6 @@ form.addEventListener('submit', (e) => {
     [input.name]: input.value,
     [input2.name]: input2.value,
   }
-
   users = [...users, user]
+  return console.log(users)
 })
