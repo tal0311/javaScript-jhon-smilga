@@ -14,7 +14,8 @@ class Gallery {
     this.list = [...element.querySelectorAll('.img')]
     console.log('this.list:', this.list)
     this.modal = getElement('.modal')
-    this.modalImg = getElement('.modal-img')
+    this.modalImg = getElement('.main-img')
+    this.imageName = getElement('.image-name')
     this.modalImgs = getElement('.modal-images')
     this.closeBtn = getElement('.close-btn')
     this.nextBtn = getElement('.next-btn')
@@ -27,14 +28,35 @@ class Gallery {
     this.container.addEventListener(
       'click',
       function (e) {
-        console.log(self)
-        this.openModel()
+        if (e.target.classList.contains('img')) {
+          this.openModel(e.target, this.list)
+        }
       }.bind(this)
     )
   }
-  openModel() {
-    this.modal.classList.add()
-    console.log('open modal')
+  openModel(selectedImage, list) {
+    this.setMainImage(selectedImage)
+    this.modalImgs.innerHTML = list
+      .map((image) => {
+        return ` <img
+        src="${image.src}"
+        title="${image.title}"
+        class="${
+          selectedImage.dataset.id === image.dataset.id
+            ? 'modal-img selected'
+            : 'modal-img'
+        }"
+        data-id="${image.dataset.id}"
+        alt="nature"
+      />`
+      })
+      .join('')
+    console.log(selectedImage, list)
+    this.modal.classList.add('open')
+  }
+  setMainImage(selectedImage) {
+    this.modalImg.src = selectedImage.src
+    this.imageName.textContent = selectedImage.title
   }
 }
 
