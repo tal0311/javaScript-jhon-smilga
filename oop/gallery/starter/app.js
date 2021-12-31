@@ -99,4 +99,6 @@ class Gallery {
 }
 
 let nature = new Gallery(getElement('.nature'))
+console.log('nature:', nature)
 let city = new Gallery(getElement('.city'))
+console.log('city:', city)
