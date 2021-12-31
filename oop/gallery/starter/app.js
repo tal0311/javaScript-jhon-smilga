@@ -12,7 +12,7 @@ class Gallery {
   constructor(element) {
     this.container = element
     this.list = [...element.querySelectorAll('.img')]
-    console.log('this.list:', this.list)
+
     this.modal = getElement('.modal')
     this.modalImg = getElement('.main-img')
     this.imageName = getElement('.image-name')
@@ -24,6 +24,9 @@ class Gallery {
     // SELF REFERENCE POINTS TO GALLERY
     // let self = this
     // bind functions
+    this.closeModal = this.closeModal.bind(this)
+    this.prevImage = this.prevImage.bind(this)
+    this.nextImage = this.nextImage.bind(this)
 
     this.container.addEventListener(
       'click',
@@ -51,13 +54,24 @@ class Gallery {
       />`
       })
       .join('')
-    console.log(selectedImage, list)
+
     this.modal.classList.add('open')
+    this.closeBtn.addEventListener('click', this.closeModal)
+    this.nextBtn.addEventListener('click', this.nextImage)
+    this.prevBtn.addEventListener('click', this.prevImage)
   }
   setMainImage(selectedImage) {
     this.modalImg.src = selectedImage.src
     this.imageName.textContent = selectedImage.title
   }
+  closeModal() {
+    this.modal.classList.remove('open')
+    this.closeBtn.removeEventListener('click', this.closeModal)
+    this.nextBtn.removeEventListener('click', this.nextImage)
+    this.prevBtn.removeEventListener('click', this.prevImage)
+  }
+  nextImage() {}
+  prevImage() {}
 }
 
 let nature = new Gallery(getElement('.nature'))
