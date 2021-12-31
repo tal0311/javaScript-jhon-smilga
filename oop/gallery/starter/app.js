@@ -27,6 +27,7 @@ class Gallery {
     this.closeModal = this.closeModal.bind(this)
     this.prevImage = this.prevImage.bind(this)
     this.nextImage = this.nextImage.bind(this)
+    this.chooseImage = this.chooseImage.bind(this)
 
     this.container.addEventListener(
       'click',
@@ -59,6 +60,7 @@ class Gallery {
     this.closeBtn.addEventListener('click', this.closeModal)
     this.nextBtn.addEventListener('click', this.nextImage)
     this.prevBtn.addEventListener('click', this.prevImage)
+    this.modalImgs.addEventListener('click', this.chooseImage)
   }
   setMainImage(selectedImage) {
     this.modalImg.src = selectedImage.src
@@ -69,12 +71,32 @@ class Gallery {
     this.closeBtn.removeEventListener('click', this.closeModal)
     this.nextBtn.removeEventListener('click', this.nextImage)
     this.prevBtn.removeEventListener('click', this.prevImage)
+    this.modalImgs.removeEventListener('click', this.chooseImage)
   }
-  nextImage() {}
-  prevImage() {}
+  nextImage() {
+    const selected = this.modalImgs.querySelector('.selected')
+    const next = selected.nextElementSibling || this.modalImgs.firstElementChild
+    selected.classList.remove('selected')
+    next.classList.add('selected')
+    this.setMainImage(next)
+  }
+  prevImage() {
+    const selected = this.modalImgs.querySelector('.selected')
+    const prev =
+      selected.previousElementSibling || this.modalImgs.lastElementChild
+    selected.classList.remove('selected')
+    prev.classList.add('selected')
+    this.setMainImage(prev)
+  }
+  chooseImage(e) {
+    if (e.target.classList.contains('modal-img')) {
+      const selected = this.modalImgs.querySelector('.selected')
+      selected.classList.remove('selected')
+      e.target.classList.add('selected')
+      this.setMainImage(e.target)
+    }
+  }
 }
 
 let nature = new Gallery(getElement('.nature'))
 let city = new Gallery(getElement('.city'))
-
-console.log(nature, city)
