@@ -1,9 +1,9 @@
 import { people } from './utils/data.js'
 import showPeople from './utils/showPeople.js'
-import getElement from './utils/getElemnt.js'
+import get from './utils/getElement.js'
 
-const container = getElement('.container')
-const btn = getElement('.btn')
+const container = get('.container')
+const btn = get('.btn')
 
 btn.addEventListener('click', () => {
   container.innerHTML = showPeople(people)
