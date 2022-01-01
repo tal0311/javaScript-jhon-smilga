@@ -1,17 +1,10 @@
 import { people } from './utils/data.js'
+import showPeople from './utils/showPeople.js'
+import getElement from './utils/getElemnt.js'
 
-const container = document.querySelector('.container')
-const btn = document.querySelector('.btn')
+const container = getElement('.container')
+const btn = getElement('.btn')
 
-function showPeople() {
-  let newPeople = people
-    .map((person) => {
-      const { name, job } = person
-      return `<p>this is ${name} he is a <strong>${job}</strong> </p>`
-    })
-    .join(' ')
-
-  container.innerHTML = newPeople
-}
-
-btn.addEventListener('click', showPeople)
+btn.addEventListener('click', () => {
+  container.innerHTML = showPeople(people)
+})
