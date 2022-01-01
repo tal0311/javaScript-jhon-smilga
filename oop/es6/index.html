@@ -12,12 +12,51 @@
       alt=""
     /> -->
     <script>
-      let mine = 'mine'
+      // ARR.FILL()
+      // let mine = 'mine'
+      // let mineArr = []
+      // console.log((mineArr.length = 20))
+      // mineArr.fill(mine)
+      // console.log('mineArr:', mineArr)
 
-      let mineArr = []
-      console.log((mineArr.length = 20))
-      mineArr.fill(mine)
-      console.log('mineArr:', mineArr)
+      // FIND
+      // const people = [
+      //   {
+      //     id: 1,
+      //     name: 'john',
+      //   },
+      //   {
+      //     id: 2,
+      //     name: 'anna',
+      //   },
+      //   {
+      //     id: 3,
+      //     name: 'peter',
+      //   },
+      // ]
+
+      // let person = people.find((person) => person.name === 'anna')
+      // console.log('person:', person)
+
+      // FINDINDEX
+      // const personIndex = people.findIndex((person) => person.id === 3)
+      // console.log('personIndex:', personIndex)
+
+      // // splice()/splice to delete item from array
+      // let newPeople = people.slice(0, personIndex)
+      // console.log(people)
+      // console.log('newPeople:', newPeople)
+      // people.splice(personIndex)
+      // console.log(people)
+
+      // EVERY
+      const grades = ['A', 'B', 'A', 'B', 'C']
+
+      let goodGrades = grades.every((grade) => grade != 'C')
+      console.log('goodGrades:', goodGrades)
+
+      let oneBadGrad = grades.some((grade) => grade === 'C')
+      console.log('oneBadGrad:', oneBadGrad)
     </script>
   </body>
 </html>
