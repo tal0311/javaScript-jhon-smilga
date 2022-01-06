@@ -1,15 +1,17 @@
 import fetchDrinks from './src/fetchDrinks.js'
 import displayDrink from './src/displaySingleDrink.js'
-const baseURL = 'www.thecocktaildb.com/api/json/v1/1/lookup.php?i='
+import displaySingleDrink from './src/displaySingleDrink.js'
 
 const presentDrink = async () => {
   const id = localStorage.getItem('drink')
-  console.log(id)
-
-  const drink = await fetchDrinks(baseURL + id)
-  displayDrink(drink)
-
-  console.log(response)
+  if (!id) {
+    window.location.replace('index.html')
+  } else {
+    let drink = await fetchDrinks(
+      `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+    )
+    displaySingleDrink(drink)
+  }
 }
 
 window.addEventListener('DOMContentLoaded', presentDrink)
